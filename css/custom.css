@@ -1,0 +1,137 @@
+/* Center the book */
+.panel__image.panel__image--book {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 60px;
+}
+
+/* .product-panel--book .panel__image--book {
+	position: absolute;
+	max-width: 500px;
+	top: calc(-5em - 5vw);
+	right: 0;
+}
+
+.product-panel .panel__image {
+	width: calc(30% + 2vw);
+	-ms-flex-order: 1;
+	order: 1;
+} */
+
+.article__content a:not(.btn):not(.toolbar-item) {
+	color: #006fc6;
+}
+
+.product-panel--book .panel__image--book img {
+	width: 100% !important;
+}
+
+.books__book__img {
+	width: 100%;
+	max-width: 20px;
+	will-change: transform;
+	transform-origin: 0 100%;
+	transform: rotate(-10deg);
+	transition: transform 0.3s ease-out;
+}
+
+.books__book__img:hover {
+    transform: rotate(0);
+}
+
+.author__image-wrapper::before,
+.books__book__image::before {
+    display: block;
+    content: "";
+    height: 20%;
+    width: 45%;
+    position: absolute;
+    background-image: url(https://i.imgur.com/5udcDlp.png);
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    top: 84%;
+    left: 35%;
+    right: 0;
+    transition: all 0.2s ease-out;
+    transform-origin: 30% 50%;
+    pointer-events: none;
+}
+
+.books__book__image:hover {
+    position: relative;
+}
+
+
+/* from codepen */
+/* https://codepen.io/juhanirusi/pen/NWjzaBb */
+
+html {
+    min-height: 100%;
+   
+   /* Code above makes sure our page actually covers the entire viewport. */
+   
+    background-image: url(https://panoramicireland.com/images/2018/08/06/panoramic-ireland-trinity-long-room-library-3837.jpg);
+    background-size: cover;
+   
+   /* "cover" tells the browser to make sure the image always covers the entire container, in this case html. The browser will cover the container even if it has to stretch the image or cut a little bit off the edges. */
+   
+    background-repeat: no-repeat;
+   
+   /* The browser can also choose to display your background image as tiles depending on its size. To prevent this from happening, use no-repeat: */
+   
+    background-position: center;
+
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+ 
+ }
+ 
+ /* To keep things pretty, we will keep our image always centered, this will center the image both horizontally and vertically at all times.*/
+ 
+   
+ 
+ 
+ 
+ 
+ 
+ /* Optional: How to Add a Media Query for Mobile
+ To add some icing on the cake, you may wish to add a media query for smaller screens: */
+ 
+ /* @media only screen and (max-width: 767px) {
+   html {
+      background-image: url(smaller-image.jpg);
+   }
+ } */
+ 
+ /* You can downsize your original image to improve page load speed on mobile internet connections! */
+
+/* from https://codepen.io/paulradzkov/pen/ejyHK */
+
+ h1 {
+    margin: auto 4em;
+    font-family: sans-serif;
+  }
+  
+  h1 .w1 {
+    background-color: black;
+    color: white;
+    padding: 0.02em;
+    box-shadow:0 0 0 0.5em black;
+  }
+  h1 .w2 {
+    position: relative;
+  }
+  
+  /* positioning */
+  html, body {
+    /* display: flex; */
+    flex-direction: column;
+    min-height: 100%;
+  }
+  
+  body {
+    flex-grow: 1;
+  }

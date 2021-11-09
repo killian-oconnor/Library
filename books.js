@@ -7,7 +7,10 @@ document.getElementById("btnCloseAdd").addEventListener("click", bookAddDisplay)
 document.getElementById("btnAddBook").addEventListener("click", addBookToLibrary);
 
 
-let myLibrary = [];
+
+let myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
+displayBooks();
+
 
 // book constructor
 function Book(title, author, pages, read) {
@@ -35,40 +38,69 @@ function addBookToLibrary() {
     let pages = document.getElementById("BookPages").value;
     let read = document.getElementById("readOrNot").checked;
 
+    if (title === "" || author === "") {
+        alert("Please fill out the appropriate information before adding book");
+        return;
+    }
+
     let book = new Book(title, author, pages, read);
     myLibrary.push(book);
 
     bookAddDisplay();
 
+    // Put the object into storage
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
+
     displayBooks();
 
-  }
+    document.getElementById("BookTitle").value = "";
+    document.getElementById("BookAuthor").value = "";
+
+}
 
 // loops through the array and displays each book on the page
 function displayBooks() {
 // do stuff here
 
-bookShelf.innerHTML = "";
+    bookShelf.innerHTML = "";
 
-for (let book of myLibrary){
-    const row = document.createElement('div');
-    row.classList.add("row");
-    bookShelf.appendChild(row);
+    for (let book of myLibrary){
+        const row = document.createElement('div');
+        row.classList.add("row");
+        bookShelf.appendChild(row);
 
-    for (let property in book){
-        if (typeof(book[property]) !== "function") {
-            const col = document.createElement('div');
-            col.classList.add("col");
-            col.textContent = book[property];
-            row.appendChild(col);
+        for (let property in book){
+            if (typeof(book[property]) !== "function") {
+                const col = document.createElement('div');
+                col.classList.add("col");
+                col.textContent = book[property];
+                row.appendChild(col);
+            }
+            else {
+                console.log(typeof(book[property]));
+            }
         }
-        else {
-            console.log(typeof(book[property]));
-        }
+
+        const col = document.createElement('div');
+        col.classList.add("col");
+        const button = document.createElement('button');
+        button.id = "btnRemove" + myLibrary.indexOf(book);
+        button.value = myLibrary.indexOf(book);
+        button.textContent = "Remove"
+        button.classList.add("btn");
+        button.classList.add("btn-danger");
+        button.addEventListener("click", removeFunc);
+        row.appendChild(col);
+        col.appendChild(button);
+
     }
-}
-console.table(myLibrary);
+    console.table(myLibrary);
 
+}
+
+function removeFunc() {
+    myLibrary.splice(this.value, 1);
+    displayBooks();
 }
 
 function bookAddDisplay() {
