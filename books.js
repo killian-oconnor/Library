@@ -62,7 +62,7 @@ function addBookToLibrary() {
 function displayBooks() {
 // do stuff here
 
-    bookShelf.innerHTML = "";
+    bookShelf.innerHTML = `<div class="row"> <div class="col"> Title </div> <div class="col"> Author </div> <div class="col"> Pages </div> <div class="col"> Been read? </div> <div class="col"> </div> </div>`;
 
     for (let book of myLibrary){
         const row = document.createElement('div');
@@ -100,6 +100,8 @@ function displayBooks() {
 
 function removeFunc() {
     myLibrary.splice(this.value, 1);
+    // remove the object from storage
+    localStorage.setItem('myLibrary', JSON.stringify(myLibrary));
     displayBooks();
 }
 
