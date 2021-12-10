@@ -7,7 +7,6 @@ document.getElementById("btnCloseAdd").addEventListener("click", bookAddDisplay)
 document.getElementById("btnAddBook").addEventListener("click", addBookToLibrary);
 
 
-
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
 displayBooks();
 
