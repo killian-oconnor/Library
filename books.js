@@ -10,17 +10,21 @@ document.getElementById("btnAddBook").addEventListener("click", addBookToLibrary
 let myLibrary = JSON.parse(localStorage.getItem("myLibrary") || "[]");
 displayBooks();
 
+// book class
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
 
-// book constructor
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.info = function() {
+    info() {
         return (`${title} by ${author}, ${pages} pages, ${read}`);
     }
 }
+
+
 
 // take user’s input and store the new book objects into an array
 // function addBookToLibrary(title, author, pages, read) {
@@ -114,6 +118,5 @@ function bookAddDisplay() {
   } 
 
 //addBookToLibrary();
-
 
 
